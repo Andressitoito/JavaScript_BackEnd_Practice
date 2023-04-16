@@ -45,10 +45,10 @@ const sumArray = (array) => {
 // Create a function that takes a string and returns a Promise that resolves with the reversed string.
 
 const returnReversed = (str) => {
-	return new Promise((resolved) => {
+	return new Promise((resolve) => {
 		let reversedString = str.split("").reverse().join("");
 
-		return resolved({
+		return resolve({
 			reversedString: reversedString,
 		});
 	});
@@ -59,9 +59,9 @@ const returnReversed = (str) => {
 // Create a function that takes a number and returns a Promise that resolves with an array of the first n Fibonacci numbers.
 
 const return_n_FibonacciArray = (n) => {
-	return new Promise((resolved, rejected) => {
+	return new Promise((resolve, rejecte) => {
 		if (n === 0) {
-			return rejected({
+			return rejecte({
 				error:
 					"Fibonacci sequence starts with 0 and 1, please provide a positive integer greater than 0.",
 			});
@@ -80,15 +80,13 @@ const return_n_FibonacciArray = (n) => {
 			FibonacciArray.push(sum);
 		}
 
-		return resolved({
+		return resolve({
 			FibonacciArray: FibonacciArray,
 		});
 	});
 };
 
-return_n_FibonacciArray(9)
-	.then((response) => console.log(response))
-	.catch((error) => console.log(error));
+// return_n_FibonacciArray(9).then((response) => console.log(response)).catch((error) => console.log(error));
 
 // return_n_FibonacciArray(0)
 // 	.then((response) => console.log(response))
@@ -140,47 +138,6 @@ two_previous = 2
 one_previous = sum;
 one_previous = 3
 */
-
-/* 
-Para todas las operaciones/funciones:
-Debe devolver una PROMESA que se resuelva siempre que el resultado sea positivo.
-En caso de que algún número NO sea número, rechazar la promesa indicando “Solo números”
-En caso de que algún número sea cero, rechazar la promesa indicando “Operación innecesaria”
-Definir función suma/resta/multiplicacion/division y en caso de que la operacion sea negativa, rechazar la promesa indicando “La calculadora sólo debe devolver valores positivos” (ejemplo: 10 + (-15) = -5 debe rechazarse)
-*/
-
-//funcion de ayuda: para verificar si es numero y si es mayor a cero
-function esNumero(num) {
-	if (isNaN(num)) {
-		let message = "Solo números";
-		return { success: false, message };
-	} else if (num === 0) {
-		let message = "Operación innecesaria";
-		return { success: false, message };
-	} else {
-		return { success: true, number: num };
-	}
-}
-//funcion de ayuda: para verificar si da lo mismo que con then/catch
-async function calculos(num1, num2, operacion) {
-	try {
-		let calculo = await operacion(num1, num2);
-		console.log(calculo);
-		return calculo;
-	} catch (error) {
-		console.log(error);
-		return error;
-	}
-}
-
-
-
-
-
-
-
-
-
 
 
 
